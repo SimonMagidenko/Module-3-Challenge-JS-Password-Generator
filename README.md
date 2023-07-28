@@ -2,8 +2,6 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
 I created the Random Password Generator project to help people generate strong and unique passwords easily. The main problem it solves is the challenge of having weak passwords for online accounts. With this tool, users can define the password length and choose character sets, such as lowercase letters, uppercase letters, numbers, and special characters. While building this project, I deepened my understanding of JavaScript programming, learned to handle user input, and improved my skills in generating random passwords.
 
 ## Usage
