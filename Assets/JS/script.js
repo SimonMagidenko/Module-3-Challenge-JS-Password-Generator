@@ -8,49 +8,63 @@ let upperCaseAlphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", 
 let numbers = [0,1,2,3,4,5,6,7,8,9];
 let specialCharacters = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', "[", '\\', "]", '^', "_", '`', '{', '|', '}', '~'];
 
-let builtArray= []
-
-
+let selectedCharacterSets= []
 
 
 function generatePassword() {
-  if (confirm("Do you want your password to contain lowercase letters?"))
-{
-  builtArray = [...builtArray, ...lowerCaseAlphabet];
-} else if (confirm("Do you want your password to contain Uppercase letters?"))
- {
-  builtArray = [...builtArray, ...upperCaseAlphabet];
-} else if (confirm("Do you want your password to contain numbers?"))
-{
-  builtArray = [...builtArray, ...numbers];
-} else (confirm("Do you want your password to contain special character?"))
-{
-  builtArray = [...builtArray, ...specialCharacters];
-}
 
+  let passwordLength = prompt("How many characters do you want the password to be?")
+  
+  if (passwordLength < 8 || passwordLength > 128) {
+    alert("Password length must be between 8 and 128 characters.");
+    return;
+  }
+  let useLowerCase = prompt("Include lowercase letters? Type 'yes' or 'no'");
+  let useUpperCase = prompt("Include uppercase letters? Type 'yes' or 'no'");
+  let useNumbers = prompt("Include numbers? Type 'yes' or 'no'");
+  let useSpecialCharacters = prompt("Include special characters? Type 'yes' or 'no'");
+  let includeLowerCase = useLowerCase.toLowerCase() === 'yes';
+  let includeUpperCase = useUpperCase.toLowerCase() === 'yes';
+  let includeNumbers = useNumbers.toLowerCase() === 'yes';
+  let includeSpecialCharacters = useSpecialCharacters.toLowerCase() === 'yes';
+  
+  if (includeLowerCase) {
+    selectedCharacterSets = [...selectedCharacterSets, ...lowerCaseAlphabet];
+  }
 
+  else if (includeUpperCase) {
+    selectedCharacterSets = [...selectedCharacterSets, ...upperCaseAlphabet];
+
+  }
+
+  else if (includeNumbers) {
+    selectedCharacterSets = [...selectedCharacterSets, ...numbers];
+  }
+  
+  else if (includeSpecialCharacters) {
+    selectedCharacterSets = [...selectedCharacterSets, ...specialCharacters];
+  }
+  else {
+    alert("You must include at least one character set for the password.");
+    return;
+  }
 
 let password = ""
-let passwordLength = prompt("How long do you want the password to be?")
-
 
 for (let i = 0; i < passwordLength; i++) {
-  
-  password += "x";
+  let randomIndex = Math.floor(Math.random()* selectedCharacterSets.length);
+  let randomCharacter = selectedCharacterSets[randomIndex];
 
 
 
-
-
-    // Build a string based off of randomly selected values from an array
-
-    return "Random Password";
+  password += randomCharacter;
 }
+    return password
 }
 
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  let password = generatePassword();
+  let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
