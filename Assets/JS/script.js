@@ -27,7 +27,7 @@ function generatePassword() {
 {
   builtArray = [...builtArray, ...specialCharacters];
 }
-}
+
 
 
 let password = ""
@@ -45,8 +45,8 @@ for (let i = 0; i < passwordLength; i++) {
     // Build a string based off of randomly selected values from an array
 
     return "Random Password";
-
-
+}
+}
 
 function writePassword() {
   var password = generatePassword();
@@ -57,4 +57,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-}
+
